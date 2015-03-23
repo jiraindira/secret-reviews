@@ -1,0 +1,110 @@
+<!-- taste of food -->
+<label>How was the food/drink?</label>
+<div class="form-group">
+    <div class="radio">
+        <label>
+            <input type="radio" name="group1" ng-model="formData.taste" value="delicious" checked>
+            It was delicious!
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="group1" ng-model="formData.taste" value="average">
+            It was alright!
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="group1" ng-model="formData.taste" value="poor">
+            It was meh!
+        </label>
+    </div>
+</div>
+
+<!-- ambiance of the place -->
+<label>How was the ambiance?</label>
+<div class="form-group">
+    <div class="radio">
+        <label>
+            <input type="radio" name="group2" ng-model="formData.ambiance" value="romantic" checked>
+            It had a romantic feel.
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="group2" ng-model="formData.ambiance" value="casual">
+            It had a casual feel.
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" name="group2" ng-model="formData.ambiance" value="upscale">
+            It had an upscale feel.
+        </label>
+    </div>
+</div>
+
+<!--  what type of a spot -->
+<label>How would you best describe the spot?</label>
+<div class="form-group">
+    <div class="checkbox" ng-repeat="(key, val) in formData.ambiances">
+        <label>
+            <input type="checkbox" name="group3" ng-model="formData.ambiances[key]">
+            {{key}}
+        </label>
+    </div>
+</div>
+
+<!--  Price -->
+<label>Damage to the pocket?</label>
+<div class="form-group">
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.cost" value="$">
+            $
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.cost" value="$$">
+            $$
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.cost" value="$$$">
+            $$$
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.cost" value="$$$$">
+            $$$$
+        </label>
+    </div>
+</div>
+
+<!--  what is your verdict -->
+<label>Would you recommend a friend here?</label>
+<div class="form-group">
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.verdict" value="yes" checked>
+            Yes!!
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="formData.verdict" value="no">
+            No!!
+        </label>
+    </div>
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <a ui-sref="app.addReview.optional" class="btn btn-block btn-info">
+            Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+[
+  {
+    "rank": 1,
+    "optionality": "required",
+    "id": "securities",
+    "example": [
+      "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask')",
+      "=BMatrix('IBM Equity, , AAPL Equity','Px_Volume, Px_Ask)",
+      "=BMatrix(A33:A35,'Px_Volume, Px_Ask')"
+    ],
+    "name": "Securities",
+    "snippet": "Securities can either be a string or a reference to cells\r\n\r\nBlank spaces will be respected in the output",
+    "values": ""
+  },
+
+  {
+    "rank": 2,
+    "optionality": "required",
+    "id": "fields",
+    "example": "=BMatrix('IBM Equity, AAPL Equity',B32:B35), \r\n\r\n=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask, last_price'),\r\n\r\n=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask, , last_price')",
+    "name": "Fields",
+    "snippet": "Securities can either be a string or a reference to cells\r\n\r\nBlank spaces will be respected in the output\r\n\r\nRealtime and static fields can be provided in the same formula",
+    "values": ""
+  },
+
+  {
+    "rank": 3,
+    "optionality": "optional",
+    "id": "target",
+    "example": "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask', 'Target=B33')",
+    "name": "Target",
+    "snippet": "Specifies the cell where the output should start populating (top left corner) \r\n\r\nThe only valid format is a string (no cell reference). \r\n\r\nDefault is one row below the formula",
+    "values": ""
+  },
+
+  {
+    "rank": 4,
+    "optionality": "optional",
+    "id": "header",
+    "example": "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask', 'Header=True')",
+    "name": "Header",
+    "snippet": "This parameter will return the headers for the fields",
+    "values": "TRUE (or Y) Shows Header FALSE (or N) Does Not Show Header (Default)"
+  },
+
+  {
+    "rank": 5,
+    "optionality": "optional",
+    "id": "securities",
+    "example": "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask', 'Securities=True', 'Header=True')",
+    "name": "Securities",
+    "snippet": "This parameter will return the securities as part of the output",
+    "values": "TRUE (or Y) Show Securities \r\n\r\nFALSE (or N) Does Not Show Securities (Default)"
+  },
+
+  {
+    "rank": 6,
+    "optionality": "optional",
+    "id": "snapshot",
+    "example": "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask', 'Securities=True', 'Header=True', 'Snapshot=17:40:00')",
+    "name": "Snapshot",
+    "snippet": "This parameter provides the ability to automatically refresh the data at a specific time. Real time fields will be converted to static fields. \r\n\r\nFollows local PC time, not Bloomberg Server Time \r\n\r\nDates have to be entered in 24 Hour format. (hh:mm:ss)",
+    "values": ""
+  },
+
+  {
+    "rank": 7,
+    "optionality": "optional",
+    "id": "frequency",
+    "example": "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask', 'Securities=True', 'Header=True', 'CDR=US')",
+    "name": "Frequency",
+    "snippet": "This parameter provides the ability to set the update frequency for real time fields. You can use either Frequency or Freq. \r\n\r\n Examples: 1s, 5s, 5m, 10m, 1h, 2m3s (Default: 1s)",
+    "values": ""
+  },
+
+  {
+    "rank": 8,
+    "optionality": "optional",
+    "id": "cdr",
+    "example": "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask', 'Securities=True', 'Header=True', 'Snapshot=17:40:00')",
+    "name": "CDR",
+    "snippet": "This parameter defines the calendar used to determine non-working days when calculating the date to import. \r\n\r\nValid entries are a single Bloomberg two-letter calendar code. The default value is '', which indicates no holidays are accounted for.",
+    "values": "CDR<GO> for a full list of calendar codes."
+  },
+
+  {
+    "rank": 9,
+    "optionality": "optional",
+    "id": "direction",
+    "example": "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask', 'Securities=True', 'Header=True', 'Direction=H')",
+    "name": "Direction",
+    "snippet": "This parameter controls the orientation of the output based on the Securities.",
+    "values": "H Securities going across column \r\n\r\nV Securities going across rows (Default)"
+  },
+
+  {
+    "rank": 10,
+    "optionality": "optional",
+    "id": "array",
+    "example": "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask', 'Securities=True', 'Header=True', 'Array=True')",
+    "name": "Array",
+    "snippet": "This parameter renders the formula as an array.",
+    "values": "TRUE(or Y) Creates an Array \r\n\r\nFALSE(or N) Does Not Create an Array (Default)"
+  },
+
+  {
+    "rank": 11,
+    "optionality": "optional",
+    "id": "fill",
+    "example": "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask', 'Securities=True', 'Header=True', 'Fill=NA')",
+    "name": "Fill",
+    "snippet": "This parameter provides the ability to fill an error or gap with a default value.",
+    "values": "P Inserts last available data \r\n\r\nE Returns an error message \r\n\r\nB Fills a blank \r\n\r\nNA Returns an Excel N/A Error"
+  },
+
+  {
+    "rank": 12,
+    "optionality": "optional",
+    "id": "cap_change",
+    "example": "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask', 'Securities=True', 'Header=True', 'CapChg=Yes')",
+    "name": "CapChg",
+    "snippet": "Indicates that historical pricing and/or volume is adjusted to reflect Spin-Offs, Stock Splits/Consolidations, Stocks Dividend/Bonus, Rights Offerings/Entitlement. \r\n\r\nFor more information on these adjustments, see DPDF <Help>.",
+    "values": "Yes(or Y) \r\n\r\nNo(or N) (Default)"
+  },
+
+  {
+    "rank": 13,
+    "optionality": "optional",
+    "id": "fx",
+    "example": "=BMatrix('IBM Equity, AAPL Equity','Px_Volume, Px_Ask', 'Securities=True', 'Header=True', 'Fx=US')",
+    "name": "Fx",
+    "snippet": "The currency in which to display values. \r\n\r\nFor more information on the currency codes that can be used, see CURR <Help>.",
+    "values": ""
+  }
+]

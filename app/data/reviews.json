@@ -1,0 +1,30 @@
+[
+    {
+        "reviewer": "jirain",
+        "name": "Turntable Mad For Chicken",
+        "location": "KTown",
+        "taste": "delicious",
+        "ambiance": "casual",
+        "dateSpot": "false",
+        "catchUpSpot": "true",
+        "businessSpot": "false",
+        "cost": "$$",
+        "verdict": "yes",
+        "dishes": "crab salad, spicy chicken",
+        "caption": "Great korean fried chicken!"
+    },
+    {
+        "reviewer": "jirain",
+        "name": "Le Zei",
+        "location": "Chelsea",
+        "taste": "delicious",
+        "ambiance": "romantic",
+        "dateSpot": "true",
+        "catchUpSpot": "true",
+        "businessSpot": "false",
+        "cost": "$$",
+        "verdict": "yes",
+        "dishes": "meatball spaghetti",
+        "caption": "Best meatball spaghetti I have ever had"
+    }
+]

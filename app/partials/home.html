@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+
+        <div id="form-container">
+            <div class="page-header text-center">
+                <h2>Restaurant Listings</h2>
+            </div>
+
+            <div id="signup-form" class="parameterTable">
+                <table>
+                    <tr>
+                        <th>Reviewer</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Taste</th>
+                        <th>Ambiance</th>
+                        <th>Cost</th>
+                        <th>Verdict</th>
+                        <th>Dish(es)</th>
+                        <th>Caption</th>
+                    </tr>
+                    <tr ng-repeat="review in reviews | filter:query">
+                        <td><span>{{review.reviewer}}</span></td>
+                        <td><span>{{review.name}}</span></td>
+                        <td><span>{{review.location}}</span></td>
+                        <td><span>{{review.taste}}</span></td>
+                        <td>{{review.ambiances | list }}</td>
+                        <td><span>{{review.cost}}</span></td>
+                        <td><span>{{review.verdict}}</span></td>
+                        <td><span>{{review.dishes}}</span></td>
+                        <td><span>{{review.caption}}</span></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

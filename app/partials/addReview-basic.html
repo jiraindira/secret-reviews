@@ -1,0 +1,22 @@
+<div class="form-group">
+    <label for="reviewer">Reviewer's Name</label>
+    <input type="text" class="form-control" name="reviewer" ng-model="formData.reviewer">
+</div>
+
+<div class="form-group">
+    <label for="name">Name of Restaurant or Bar</label>
+    <input type="text" class="form-control" name="name" ng-model="formData.name">
+</div>
+
+<div class="form-group">
+    <label for="email">Location</label>
+    <input type="text" class="form-control" name="location" ng-model="formData.location">
+</div>
+
+<div class="form-group row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <a ui-sref="app.addReview.required" class="btn btn-block btn-primary">
+            Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+        </a>
+    </div>
+</div>
