@@ -126,7 +126,7 @@ angular.module('formApp', ['ngAnimate', 'ui.router', 'firebase'])
             //catchUpSpot : false,
             //businessSpot : false,
             ambiances: {
-                'Date Spot': true,
+                'Date Spot': false,
                 'Catch Up Spot': false,
                 'Business Spot': false
             }
