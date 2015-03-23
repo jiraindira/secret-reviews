@@ -1,6 +1,11 @@
 /**
  * Created by Jiraindira on 12/15/14.
  */
+if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+    }, false);
+}
 
 angular.module('formApp', ['ngAnimate', 'ui.router', 'firebase'])
 
