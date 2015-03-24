@@ -20,43 +20,17 @@ pre                             { margin-bottom:20px; }
 /* active buttons */
 #status-buttons a.active span   { background: #ac5365; }
 
-/* table on home page */
-.parameterTable table{
-	border-collapse: collapse;
-	border-spacing: 0;
-	padding:2px;
+/* list on home page */
+.review {
+	list-style: none;
 }
 
-.parameterTable th{
-	background-color: #315f80;
-	color: #ffffff;
-	vertical-align:middle;
-	border: 1px solid #999;
-	text-align:left;
-	padding:5px;
-	font-size:11px;
-	font-family:Arial;
-	font-weight:normal;
-
+.review li {
+	clear: both;
+	padding-top: 15px;
 }
 
-.parameterTable tr:nth-child(odd){
-	background-color: #f3f3f7;
-}
-.parameterTable tr:nth-child(even){
-	background-color:#ffffff;
-}
 
-.parameterTable td{
-	vertical-align:middle;
-	border: 1px solid #999;
-	text-align:left;
-	padding:5px;
-	font-size:11px;
-	font-family:Arial;
-	font-weight:normal;
-	color:#000000;
-}
 
 /* ANIMATION STYLINGS
 ============================================================================= */

@@ -7,7 +7,10 @@ if ('addEventListener' in document) {
     }, false);
 }
 
-angular.module('formApp', ['ngAnimate', 'ui.router', 'firebase'])
+angular.module('formApp', [
+    'ngAnimate',
+    'ui.router',
+    'firebase'])
 
 // configuring our routes 
 // =============================================================================
