@@ -10,7 +10,9 @@ if ('addEventListener' in document) {
 angular.module('formApp', [
     'ngAnimate',
     'ui.router',
-    'firebase'])
+    'firebase',
+    'ui.bootstrap'
+    ])
 
 // configuring our routes 
 // =============================================================================
@@ -107,7 +109,7 @@ angular.module('formApp', [
 
 // our controller for the form
 // =============================================================================
-    .controller('formController', ['$scope', '$firebase', '$http', function($scope,$firebase,$http) {
+    .controller('formController', ['$scope', '$state', '$firebase', '$http', function($scope,$state,$firebase,$http) {
 
         // we will store all of our form data in this object
         $http.get('data/bmatrixParameters.json').success(function(data) {
@@ -129,9 +131,14 @@ angular.module('formApp', [
             //catchUpSpot : false,
             //businessSpot : false,
             ambiances: {
-                'Date Spot': false,
-                'Catch Up Spot': false,
-                'Business Spot': false
+                'Date': false,
+                'Conversation': false,
+                'Meeting': false,
+                'Big Group': false,
+                'Great Service': false,
+                'Mixology': false,
+                'Great View': false
+
             }
         };
 
@@ -160,9 +167,11 @@ angular.module('formApp', [
 
             fb.$set(payload).then(function(ref) {
                 console.log(ref);
+                $state.go('app.home', {}, {reload: true});
             }, function(error) {
                 console.log("Error:", error);
             });
+
         };
 
     }])

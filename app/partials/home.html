@@ -13,18 +13,22 @@
                             {{review.name}} ({{review.location}})
                         </h4>
                         <div>
-                            Ambiance: {{review.ambiances | list }} | Cost: {{review.cost}}
+                            Ambiance: {{review.ambiances | list }}
                         </div>
                         <div>
-                            Taste: {{review.taste}} | Dishes: {{review.dishes}} | Verdict: {{review.verdict}}
+                            Cost: {{review.cost}} | Verdict: {{review.verdict}} | By: {{review.reviewer}}
                         </div>
                         <div>
-                            Caption: {{review.caption}}
+                            <accordion>
+                                <accordion-group heading="Details">
+                                    <p>Taste: {{review.taste}} | Dishes: {{review.dishes}}</p>
+                                    <p>Caption: {{review.caption}}</p>
+                                </accordion-group>
+                            </accordion>
                         </div>
                     </li>
                 </ul>
             </div>
-
         </div>
     </div>
 </div>
