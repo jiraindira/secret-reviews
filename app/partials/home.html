@@ -6,35 +6,25 @@
                 <h2>Restaurant Listings</h2>
             </div>
 
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered">
-                    <tr>
-                        <th>Reviewer</th>
-                        <th>Name</th>
-                        <th>Location</th>
-                        <th>Taste</th>
-                        <th>Ambiance</th>
-                        <th>Cost</th>
-                        <th>Verdict</th>
-                        <th>Dish(es)</th>
-                        <th>Caption</th>
-                    </tr>
-                    <tr ng-repeat="review in reviews | filter:query">
-                        <td><span>{{review.reviewer}}</span></td>
-                        <td><span>{{review.name}}</span></td>
-                        <td><span>{{review.location}}</span></td>
-                        <td><span>{{review.taste}}</span></td>
-                        <td>{{review.ambiances | list }}</td>
-                        <td><span>{{review.cost}}</span></td>
-                        <td><span>{{review.verdict}}</span></td>
-                        <td><span>{{review.dishes}}</span></td>
-                        <td><span>{{review.caption}}</span></td>
-                    </tr>
-                </table>
+            <div class="bs-example">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="review in reviews  | filter:query">
+                        <h4>
+                            {{review.name}} ({{review.location}})
+                        </h4>
+                        <div>
+                            Ambiance: {{review.ambiances | list }} | Cost: {{review.cost}}
+                        </div>
+                        <div>
+                            Taste: {{review.taste}} | Dishes: {{review.dishes}} | Verdict: {{review.verdict}}
+                        </div>
+                        <div>
+                            Caption: {{review.caption}}
+                        </div>
+                    </li>
+                </ul>
             </div>
 
         </div>
-
-
     </div>
 </div>

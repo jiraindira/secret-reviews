@@ -20,15 +20,6 @@ pre                             { margin-bottom:20px; }
 /* active buttons */
 #status-buttons a.active span   { background: #ac5365; }
 
-/* list on home page */
-.review {
-	list-style: none;
-}
-
-.review li {
-	clear: both;
-	padding-top: 15px;
-}
 
 
 
