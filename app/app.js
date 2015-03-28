@@ -131,14 +131,18 @@ angular.module('formApp', [
             //catchUpSpot : false,
             //businessSpot : false,
             ambiances: {
-                'Date': false,
-                'Conversation': false,
-                'Meeting': false,
                 'Big Group': false,
+                'Casual':false,
+                'Conversation': false,
+                'Crowded':false,
+                'Date': false,
+                'Fine Dining':false,
                 'Great Service': false,
+                'Great View': false,
+                'Long Wait':false,
+                'Meeting': false,
                 'Mixology': false,
-                'Great View': false
-
+                'Romantic':false
             }
         };
 
@@ -148,9 +152,6 @@ angular.module('formApp', [
             var location = $scope.formData.location;
             var taste = $scope.formData.taste;
             var ambiances = $scope.formData.ambiances;
-            //var dateSpot = $scope.formData.dateSpot;
-            //var catchUpSpot = $scope.formData.catchUpSpot;
-            //var businessSpot = $scope.formData.businessSpot;
             var verdict = $scope.formData.verdict;
             var cost = $scope.formData.cost;
             var dishes = $scope.formData.dishes;
@@ -179,7 +180,9 @@ angular.module('formApp', [
     .controller('homeController', ['$scope', '$firebase', '$http', function($scope,$firebase, $http ) {
 
         var firebaseObj = new Firebase('https://dazzling-heat-4525.firebaseio.com//list');
-
+        //ref.orderByKey().startAt("b").endAt("b~").on("child_added", function(snapshot) {
+        //    console.log(snapshot.key());
+        //});
         firebaseObj.once('value', function(dataSnapshot) {
 
             //GET DATA
