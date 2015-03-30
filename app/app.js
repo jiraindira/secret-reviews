@@ -197,6 +197,16 @@ angular.module('formApp', [
     }])
 
     .controller('homeController', ['$scope', '$firebase', '$http', function($scope,$firebase, $http ) {
+        function getArrayFromObject(object) {
+            var array = [];
+            for (var key in object) {
+                var item = object[key];
+                item.id = key;
+                array.push(item);
+            }
+            return array;
+        }
+
 
         var firebaseObj = new Firebase('https://dazzling-heat-4525.firebaseio.com//restaurant');
         //ref.orderByKey().startAt("b").endAt("b~").on("child_added", function(snapshot) {
@@ -206,21 +216,24 @@ angular.module('formApp', [
 
             //GET DATA
             var data = dataSnapshot.val();
-            var restaurants = data;
+            var restaurants = getArrayFromObject(data);
 
-            var numOfRestaurants = Object.keys(restaurants).length;
-            if (!numOfRestaurants) return;
+            //$scope.counter = 7;
+
+            //var numOfReview = Object.keys(restaurants).length;
+            //var numOfRestaurants = Object.keys(restaurants).length;
+            if (!restaurants.length) return;
 
             // Attach list of selected ambiances to each review)
-            for (var key in restaurants) {
-                var restaurant = restaurants[key];
+            restaurants.forEach(function (restaurant) {
+                restaurant.reviews = getArrayFromObject(restaurant.reviews);
 
+                // pandai pandai la
                 restaurant.ambiances = Object.keys(restaurant.ambiances)
                     .filter(function (key) {
                         return restaurant.ambiances[key];
                     });
-                console.log('omg', restaurant.ambiances)
-            }
+            });
 
             $scope.$apply(function () {
                 $scope.restaurants = restaurants;

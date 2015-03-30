@@ -7,10 +7,11 @@
             </div>
 
             <div class="bs-example">
-                <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="restaurant in restaurants | filter: query">
+                <ul class="restaurants list-group">
+                    <li class="restaurant list-group-item" ng-repeat="restaurant in restaurants | filter: query">
                         <h4>
                             {{restaurant.name}} ({{restaurant.location}})
+                            <span class="num-of-reviews badge">{{restaurant.reviews.length}}</span>
                         </h4>
                         <div>
                             Ambiance: {{restaurant.ambiances | list }}
@@ -18,13 +19,11 @@
                         <div>
                             <accordion>
                                 <accordion-group heading="Details">
-                                    <ul class="list-group">
-                                        <li class="list-group-item" ng-repeat="reviewer in restaurant.reviews">
+                                        <div ng-repeat="reviewer in restaurant.reviews">
                                             By: {{reviewer.reviewer}} | Cost: {{reviewer.cost}} | Verdict: {{reviewer.verdict}}
                                             <p>Taste: {{reviewer.taste}} | Dishes: {{reviewer.dishes}}</p>
                                             <p>Caption: {{reviewer.caption}}</p>
-                                        </li>
-                                    </ul>
+                                        </div>
                                 </accordion-group>
                             </accordion>
                         </div>

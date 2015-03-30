@@ -20,6 +20,8 @@ pre                             { margin-bottom:20px; }
 /* active buttons */
 #status-buttons a.active span   { background: #ac5365; }
 
+.restaurant h4 { position: relative; }
+.restaurant .num-of-reviews { position: absolute; top: 0; right: 0; }
 
 
 
