@@ -6,34 +6,33 @@
                 <h2>Restaurant Listings</h2>
             </div>
 
-            <!--<div class="form-group">-->
-                <!--<input type="text" class="form-control" placeholder="Search" ng-model="query">-->
-            <!--</div>-->
-
             <div class="bs-example">
-
                 <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="review in reviews | filter: query">
+                    <li class="list-group-item" ng-repeat="restaurant in restaurants | filter: query">
                         <h4>
-                            {{review.name}} ({{review.location}})
+                            {{restaurant.name}} ({{restaurant.location}})
                         </h4>
                         <div>
-                            Ambiance: {{review.ambiances | list }}
-                        </div>
-                        <div>
-                            Cost: {{review.cost}} | Verdict: {{review.verdict}} | By: {{review.reviewer}}
+                            Ambiance: {{restaurant.ambiances | list }}
                         </div>
                         <div>
                             <accordion>
                                 <accordion-group heading="Details">
-                                    <p>Taste: {{review.taste}} | Dishes: {{review.dishes}}</p>
-                                    <p>Caption: {{review.caption}}</p>
+                                    <ul class="list-group">
+                                        <li class="list-group-item" ng-repeat="reviewer in restaurant.reviews">
+                                            By: {{reviewer.reviewer}} | Cost: {{reviewer.cost}} | Verdict: {{reviewer.verdict}}
+                                            <p>Taste: {{reviewer.taste}} | Dishes: {{reviewer.dishes}}</p>
+                                            <p>Caption: {{reviewer.caption}}</p>
+                                        </li>
+                                    </ul>
                                 </accordion-group>
                             </accordion>
                         </div>
                     </li>
                 </ul>
             </div>
+
+
         </div>
     </div>
 </div>

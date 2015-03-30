@@ -3,19 +3,19 @@
 <div class="form-group">
     <div class="radio">
         <label>
-            <input type="radio" name="group1" ng-model="formData.taste" value="Delicious" checked>
+            <input type="radio" name="group1" ng-model="reviewerData.taste" value="Delicious" checked>
             It was delicious!
         </label>
     </div>
     <div class="radio">
         <label>
-            <input type="radio" name="group1" ng-model="formData.taste" value="Average">
+            <input type="radio" name="group1" ng-model="reviewerData.taste" value="Average">
             It was alright!
         </label>
     </div>
     <div class="radio">
         <label>
-            <input type="radio" name="group1" ng-model="formData.taste" value="Poor">
+            <input type="radio" name="group1" ng-model="reviewerData.taste" value="Poor">
             It was meh!
         </label>
     </div>
@@ -24,9 +24,9 @@
 <!--  what type of a spot -->
 <label>How would you best describe the place?</label>
 <div class="btn-group-sm">
-    <div ng-repeat="(key, val) in formData.ambiances">
+    <div ng-repeat="(key, val) in restaurantData.ambiances">
         <label>
-            <label class="btn btn-primary" ng-model="formData.ambiances[key]" btn-checkbox>{{key}}</label>
+            <label class="btn btn-primary" ng-model="restaurantData.ambiances[key]" btn-checkbox>{{key}}</label>
         </label>
     </div>
 
@@ -37,25 +37,25 @@
 <div class="form-group">
     <div class="radio">
         <label>
-            <input type="radio" ng-model="formData.cost" value="$">
+            <input type="radio" ng-model="reviewerData.cost" value="$">
             $
         </label>
     </div>
     <div class="radio">
         <label>
-            <input type="radio" ng-model="formData.cost" value="$$">
+            <input type="radio" ng-model="reviewerData.cost" value="$$">
             $$
         </label>
     </div>
     <div class="radio">
         <label>
-            <input type="radio" ng-model="formData.cost" value="$$$">
+            <input type="radio" ng-model="reviewerData.cost" value="$$$">
             $$$
         </label>
     </div>
     <div class="radio">
         <label>
-            <input type="radio" ng-model="formData.cost" value="$$$$">
+            <input type="radio" ng-model="reviewerData.cost" value="$$$$">
             $$$$
         </label>
     </div>
@@ -66,13 +66,13 @@
 <div class="form-group">
     <div class="radio">
         <label>
-            <input type="radio" ng-model="formData.verdict" value="Yes" checked>
+            <input type="radio" ng-model="reviewerData.verdict" value="Yes" checked>
             Yes!!
         </label>
     </div>
     <div class="radio">
         <label>
-            <input type="radio" ng-model="formData.verdict" value="No">
+            <input type="radio" ng-model="reviewerData.verdict" value="No">
             No!!
         </label>
     </div>

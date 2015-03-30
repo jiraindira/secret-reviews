@@ -1,0 +1,286 @@
+{
+  "list" : {
+    "Dahlia Bock-John Brown Smokehouse" : {
+      "ambiances" : {
+        "Big Group" : true,
+        "Casual" : true,
+        "Conversation" : true,
+        "Crowded" : false,
+        "Date" : false,
+        "Fine Dining" : false,
+        "Great Service" : false,
+        "Great View" : false,
+        "Long Wait" : false,
+        "Meeting" : false,
+        "Mixology" : false,
+        "Romantic" : false
+      },
+      "caption" : "Maple pecan wings is deeeeelicious and the cornbread is heavenly!!!",
+      "cost" : "$",
+      "dishes" : "Maple pecan wings, brisket, cornbread",
+      "key" : "Dahlia Bock-John Brown Smokehouse",
+      "location" : "Long Island City, Queens",
+      "name" : "John Brown Smokehouse",
+      "reviewer" : "Dahlia Bock",
+      "taste" : "Delicious",
+      "verdict" : "Yes"
+    },
+    "Dahlia Bock-Madiba" : {
+      "ambiances" : {
+        "Big Group" : true,
+        "Casual" : true,
+        "Conversation" : true,
+        "Crowded" : false,
+        "Date" : false,
+        "Fine Dining" : false,
+        "Great Service" : false,
+        "Great View" : false,
+        "Long Wait" : true,
+        "Meeting" : false,
+        "Mixology" : false,
+        "Romantic" : false
+      },
+      "caption" : "Go before 8, it gets crowded at night!",
+      "cost" : "$$",
+      "dishes" : "Pap & boerewors, Oxtail potjie, Bobotie, Tipsy Tart, Malva Pudding, Koeksisters",
+      "key" : "Dahlia Bock-Madiba",
+      "location" : "Fort Greene, Brooklyn",
+      "name" : "Madiba",
+      "reviewer" : "Dahlia Bock",
+      "taste" : "Delicious",
+      "verdict" : "Yes"
+    },
+    "Dahlia Bock-Sweet Chick" : {
+      "ambiances" : {
+        "Big Group" : false,
+        "Casual" : true,
+        "Conversation" : true,
+        "Crowded" : true,
+        "Date" : true,
+        "Fine Dining" : false,
+        "Great Service" : false,
+        "Great View" : false,
+        "Long Wait" : false,
+        "Meeting" : false,
+        "Mixology" : false,
+        "Romantic" : false
+      },
+      "caption" : "Fried chicken is meh, waffles are very good.",
+      "cost" : "$$",
+      "dishes" : "Shrimp and Grits, Waffles, Arnold Palmer",
+      "key" : "Dahlia Bock-Sweet Chick",
+      "location" : "LES, NYC",
+      "name" : "Sweet Chick",
+      "reviewer" : "Dahlia Bock",
+      "taste" : "Delicious",
+      "verdict" : "Yes"
+    },
+    "Fiona Neale-May-Pouring Ribbons" : {
+      "ambiances" : {
+        "Big Group" : false,
+        "Casual" : true,
+        "Conversation" : true,
+        "Crowded" : true,
+        "Date" : true,
+        "Fine Dining" : false,
+        "Great Service" : true,
+        "Great View" : false,
+        "Long Wait" : true,
+        "Meeting" : false,
+        "Mixology" : true,
+        "Romantic" : true
+      },
+      "caption" : "Old Fashioned is awesome!",
+      "cost" : "$$$",
+      "dishes" : "Death and Taxes, Old Fashioned",
+      "key" : "Fiona Neale-May-Pouring Ribbons",
+      "location" : "LES, NYC",
+      "name" : "Pouring Ribbons",
+      "reviewer" : "Fiona Neale-May",
+      "taste" : "Delicious",
+      "verdict" : "Yes"
+    },
+    "Jirain-Castle Terrace" : {
+      "ambiances" : {
+        "Business Spot" : false,
+        "Catch Up Spot" : false,
+        "Date Spot" : true
+      },
+      "caption" : "Food was delicious and service was amazing",
+      "cost" : "$$$",
+      "dishes" : "Tasting menu",
+      "key" : "Jirain-Castle Terrace",
+      "location" : "Edinburgh",
+      "name" : "Castle Terrace",
+      "reviewer" : "Jirain",
+      "taste" : "delicious",
+      "verdict" : "yes"
+    },
+    "Jirain-Fette Sau" : {
+      "ambiances" : {
+        "Big Group" : true,
+        "Conversation" : true,
+        "Date" : false,
+        "Great Service" : false,
+        "Great View" : false,
+        "Meeting" : false,
+        "Mixology" : false
+      },
+      "caption" : "Great bbq place. Very hipster!",
+      "cost" : "$$",
+      "dishes" : "Meat, Sausage, Beans",
+      "key" : "Jirain-Fette Sau",
+      "location" : "Williamsburg, Brooklyn",
+      "name" : "Fette Sau",
+      "reviewer" : "Jirain",
+      "taste" : "Delicious",
+      "verdict" : "Yes"
+    },
+    "Jirain-Le Zie" : {
+      "ambiances" : {
+        "Big Group" : true,
+        "Conversation" : true,
+        "Date" : true,
+        "Great Service" : true,
+        "Great View" : false,
+        "Meeting" : false,
+        "Mixology" : false
+      },
+      "caption" : "Best spaghetti with meatballs I have ever had!",
+      "cost" : "$$",
+      "dishes" : "Spaghetti with Meatballs, Branzino",
+      "key" : "Jirain-Le Zie",
+      "location" : "Chelsea, NYC",
+      "name" : "Le Zie",
+      "reviewer" : "Jirain",
+      "taste" : "delicious",
+      "verdict" : "yes"
+    },
+    "Jirain-Mad For Chicken" : {
+      "ambiances" : {
+        "Big Group" : true,
+        "Conversation" : true,
+        "Date" : false,
+        "Great Service" : false,
+        "Great View" : false,
+        "Meeting" : false,
+        "Mixology" : false
+      },
+      "caption" : "Amazing korean fried chicken!!",
+      "cost" : "$$",
+      "dishes" : "Korean Fried Chicken (spicy), Crab Salad",
+      "key" : "Jirain-Mad For Chicken",
+      "location" : "Korea Town, NYC",
+      "name" : "Mad For Chicken",
+      "reviewer" : "Jirain",
+      "taste" : "Delicious",
+      "verdict" : "Yes"
+    },
+    "Jirain-Quality Meats" : {
+      "ambiances" : {
+        "Big Group" : false,
+        "Conversation" : true,
+        "Date" : true,
+        "Great Service" : true,
+        "Great View" : false,
+        "Meeting" : false,
+        "Mixology" : false
+      },
+      "caption" : "Great food and service. The break is amazing. Lobster was bad!!",
+      "cost" : "$$$",
+      "dishes" : "Baby Back Ribs, Sauteed Spinach",
+      "key" : "Jirain-Quality Meats",
+      "location" : "Midtown",
+      "name" : "Quality Meats",
+      "reviewer" : "Jirain",
+      "taste" : "Delicious",
+      "verdict" : "Yes"
+    },
+    "Jirain-The Boil" : {
+      "ambiances" : {
+        "Big Group" : false,
+        "Conversation" : true,
+        "Date" : false,
+        "Great Service" : false,
+        "Great View" : false,
+        "Meeting" : false,
+        "Mixology" : false
+      },
+      "caption" : "Crowded but worth the wait.",
+      "cost" : "$",
+      "dishes" : "Prawns with the boil sauce",
+      "key" : "Jirain-The Boil",
+      "location" : "LES, NY",
+      "name" : "The Boil",
+      "reviewer" : "Jirain",
+      "taste" : "Delicious",
+      "verdict" : "Yes"
+    },
+    "Jirain-The Shanty" : {
+      "ambiances" : {
+        "Big Group" : true,
+        "Casual" : true,
+        "Conversation" : true,
+        "Crowded" : false,
+        "Date" : false,
+        "Fine Dining" : false,
+        "Great Service" : false,
+        "Great View" : false,
+        "Long Wait" : false,
+        "Meeting" : false,
+        "Mixology" : true,
+        "Romantic" : false
+      },
+      "caption" : "They make their own gin, live music and 7 dollar drinks during happy hour!",
+      "cost" : "$$",
+      "dishes" : "Red Headed Stranger",
+      "key" : "Jirain-The Shanty",
+      "location" : "Williamsburg, Brooklyn",
+      "name" : "The Shanty",
+      "reviewer" : "Jirain",
+      "taste" : "Delicious",
+      "verdict" : "Yes"
+    },
+    "Lynn-Benoit" : {
+      "ambiances" : {
+        "Big Group" : false,
+        "Casual" : false,
+        "Conversation" : true,
+        "Crowded" : false,
+        "Date" : true,
+        "Fine Dining" : false,
+        "Great Service" : false,
+        "Great View" : false,
+        "Long Wait" : false,
+        "Meeting" : false,
+        "Mixology" : false,
+        "Romantic" : false
+      },
+      "caption" : "Great French wines to choose from :)",
+      "cost" : "$$$",
+      "dishes" : "Cassoulet!",
+      "key" : "Lynn-Benoit",
+      "location" : "60 W 55th Street New York",
+      "name" : "Benoit",
+      "reviewer" : "Lynn",
+      "taste" : "Delicious",
+      "verdict" : "Yes"
+    },
+    "mk-Perry Street" : {
+      "ambiances" : {
+        "Business Spot" : false,
+        "Catch Up Spot" : true,
+        "Date Spot" : true
+      },
+      "caption" : "Delish!",
+      "cost" : "$$$$",
+      "dishes" : "Everything on the menu",
+      "key" : "mk-Perry Street",
+      "location" : "West Village, NYC",
+      "name" : "Perry Street",
+      "reviewer" : "mk",
+      "taste" : "Delicious",
+      "verdict" : "Yes"
+    }
+  }
+}

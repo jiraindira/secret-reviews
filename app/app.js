@@ -116,20 +116,18 @@ angular.module('formApp', [
             $scope.parameters = data;
         });
 
-        // we will store all of our form data in this object
-        $scope.formData = {};
+        // we will store all of the restaurant specific data here
+        $scope.restaurantData = {};
+        // we will store all of the reviewer's specific data here
+        $scope.reviewerData = {};
 
         // function to process the form
         $scope.processForm = function() {
-            var temp = $scope.formData;
+            var temp = $scope.restaurantData;
             alert(temp);
         };
 
-        $scope.formData = {
-            cost: '$',
-            //dateSpot : false,
-            //catchUpSpot : false,
-            //businessSpot : false,
+        $scope.restaurantData = {
             ambiances: {
                 'Big Group': false,
                 'Casual':false,
@@ -146,32 +144,53 @@ angular.module('formApp', [
             }
         };
 
+        $scope.reviewerData = {
+            'cost': '$'
+        };
+
         $scope.AddPost = function(){
-            var reviewer = $scope.formData.reviewer;
-            var name = $scope.formData.name;
-            var location = $scope.formData.location;
-            var taste = $scope.formData.taste;
-            var ambiances = $scope.formData.ambiances;
-            var verdict = $scope.formData.verdict;
-            var cost = $scope.formData.cost;
-            var dishes = $scope.formData.dishes;
-            var caption = $scope.formData.caption;
-            var key = reviewer.concat("-",name);
+            var name = $scope.restaurantData.name;
+            var reviewer = $scope.reviewerData.reviewer;
 
-
-            var firebaseObj = new Firebase('https://dazzling-heat-4525.firebaseio.com//list');
-            var fb = $firebase(firebaseObj.child(key));
+            //add date to the reviewer list
+            $scope.reviewerData.date = new Date();
 
             // Making a copy so that you don't mess with original user input
-            var payload = angular.copy($scope.formData);
-            payload.key = key;
+            var payloadRestaurant = angular.copy($scope.restaurantData);
+            var payloadReviewer = angular.copy($scope.reviewerData);
 
-            fb.$set(payload).then(function(ref) {
-                console.log(ref);
-                $state.go('app.home', {}, {reload: true});
-            }, function(error) {
-                console.log("Error:", error);
+            // create restaurant object from firebase
+            var restoRef = new Firebase('https://dazzling-heat-4525.firebaseio.com/restaurant');
+            var reviewsUrl = "";
+            var fbReviews = {};
+
+            restoRef.orderByChild("name").startAt(name).endAt(name).once('value', function(dataSnapshot) {
+                //GET DATA
+
+                if (dataSnapshot.exists()){
+                    var data = dataSnapshot.val();
+                    var key = Object.keys(data)[0];
+                    reviewsUrl = 'https://dazzling-heat-4525.firebaseio.com/restaurant/' + key + "/reviews";
+                    fbReviews = new Firebase(reviewsUrl);
+                    fbReviews.push(payloadReviewer);
+                    $state.go('app.home', {}, {reload: true});
+                }
+                else{
+                    var pushedResto = restoRef.push(payloadRestaurant);
+                    reviewsUrl = 'https://dazzling-heat-4525.firebaseio.com/restaurant/' + pushedResto.key() + "/reviews";
+                    fbReviews = new Firebase(reviewsUrl);
+                    fbReviews.push(payloadReviewer);
+                    $state.go('app.home', {}, {reload: true});
+                }
             });
+
+
+
+
+
+
+
+
 
         };
 
@@ -179,7 +198,7 @@ angular.module('formApp', [
 
     .controller('homeController', ['$scope', '$firebase', '$http', function($scope,$firebase, $http ) {
 
-        var firebaseObj = new Firebase('https://dazzling-heat-4525.firebaseio.com//list');
+        var firebaseObj = new Firebase('https://dazzling-heat-4525.firebaseio.com//restaurant');
         //ref.orderByKey().startAt("b").endAt("b~").on("child_added", function(snapshot) {
         //    console.log(snapshot.key());
         //});
@@ -187,24 +206,24 @@ angular.module('formApp', [
 
             //GET DATA
             var data = dataSnapshot.val();
-            var reviews = data;
+            var restaurants = data;
 
-            var numOfReviews = Object.keys(reviews).length;
-            if (!numOfReviews) return;
+            var numOfRestaurants = Object.keys(restaurants).length;
+            if (!numOfRestaurants) return;
 
             // Attach list of selected ambiances to each review)
-            for (var key in reviews) {
-                var review = reviews[key];
+            for (var key in restaurants) {
+                var restaurant = restaurants[key];
 
-                review.ambiances = Object.keys(review.ambiances)
+                restaurant.ambiances = Object.keys(restaurant.ambiances)
                     .filter(function (key) {
-                        return review.ambiances[key];
+                        return restaurant.ambiances[key];
                     });
-                console.log('omg', review.ambiances)
+                console.log('omg', restaurant.ambiances)
             }
 
             $scope.$apply(function () {
-                $scope.reviews = reviews;
+                $scope.restaurants = restaurants;
             });
         });
 
