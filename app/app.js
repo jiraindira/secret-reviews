@@ -214,7 +214,14 @@ angular.module('formApp', [
             $scope.restaurantData.address = placeMetadata.location.address;
             $scope.restaurantData.location = placeMetadata.location.city;
             $scope.restaurantData.fsquareID = placeMetadata.id;
-            $scope.restaurantData.crossStreet = placeMetadata.location.crossStreet;
+            if ("crossStreet" in placeMetadata.location){
+                $scope.restaurantData.crossStreet = placeMetadata.location.crossStreet;
+            }
+            else
+            {
+                $scope.restaurantData.crossStreet = "N/A"
+            }
+
             $scope.restaurantData.longitude = placeMetadata.location.lng;
             $scope.restaurantData.latitude = placeMetadata.location.lat;
             $state.go('app.addReview.required',{},{reload: false});
