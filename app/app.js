@@ -9,8 +9,11 @@ if ('addEventListener' in document) {
 
 angular.module('formApp', [
     'ngAnimate',
+    'ngResource',
     'ui.router',
     'firebase',
+    'myService',
+    'myFilters',
     'ui.bootstrap'
     ])
 
@@ -55,16 +58,12 @@ angular.module('formApp', [
 
             .state('app.addReview.basic', {
                 url: '/basic',
-                /*
-                 templateUrl: 'templates/partials/subscriber-detail.html',
-                 controller: 'SubscriberDetailController'
-                 */
 
                 views: {
 
                     'form@app.addReview': {
                         templateUrl: 'partials/addReview-basic.html'
-//                        controller: 'formController'
+                        //controller: 'formController'
                     }
                 }
 
@@ -80,7 +79,7 @@ angular.module('formApp', [
                 views: {
                     'form@app.addReview': {
                         templateUrl: 'partials/addReview-required.html'
-//                        controller: 'formController'
+                        //controller: 'formController'
                     }
                 }
 
@@ -96,7 +95,7 @@ angular.module('formApp', [
                 views: {
                     'form@app.addReview': {
                         templateUrl: 'partials/addReview-optional.html'
-//                        controller: 'formController'
+                        //controller: 'formController'
                     }
                 }
 
@@ -109,7 +108,7 @@ angular.module('formApp', [
 
 // our controller for the form
 // =============================================================================
-    .controller('formController', ['$scope', '$state', '$firebase', '$http', function($scope,$state,$firebase,$http) {
+    .controller('formController', ['$scope', 'placesExplorerService', '$state', '$filter', '$firebase', '$http', function($scope,placesExplorerService, $state,$filter, $firebase,$http) {
 
         // we will store all of our form data in this object
         $http.get('data/bmatrixParameters.json').success(function(data) {
@@ -121,11 +120,12 @@ angular.module('formApp', [
         // we will store all of the reviewer's specific data here
         $scope.reviewerData = {};
 
+
         // function to process the form
-        $scope.processForm = function() {
-            var temp = $scope.restaurantData;
-            alert(temp);
-        };
+        //$scope.processForm = function() {
+        //    var temp = $scope.restaurantData;
+        //    alert(temp);
+        //};
 
         $scope.restaurantData = {
             ambiances: {
@@ -141,7 +141,8 @@ angular.module('formApp', [
                 'Meeting': false,
                 'Mixology': false,
                 'Romantic':false
-            }
+            },
+            'location' : 'New York, NY'
         };
 
         $scope.reviewerData = {
@@ -149,7 +150,7 @@ angular.module('formApp', [
         };
 
         $scope.AddPost = function(){
-            var name = $scope.restaurantData.name;
+            var id = $scope.restaurantData.fsquareID;
             var reviewer = $scope.reviewerData.reviewer;
 
             //add date to the reviewer list
@@ -164,7 +165,7 @@ angular.module('formApp', [
             var reviewsUrl = "";
             var fbReviews = {};
 
-            restoRef.orderByChild("name").startAt(name).endAt(name).once('value', function(dataSnapshot) {
+            restoRef.orderByChild("fsquareID").startAt(id).endAt(id).once('value', function(dataSnapshot) {
                 //GET DATA
 
                 if (dataSnapshot.exists()){
@@ -184,14 +185,39 @@ angular.module('formApp', [
                 }
             });
 
+        };
 
+        //find location from four square
+        $scope.doSearch = function () {
+            $scope.places = [];
 
+            $scope.hasResults = false;
+            var limit = 10;
 
+            placesExplorerService.get({ near: $scope.restaurantData.location, query: $scope.restaurantData.name, limit: limit }, function (placesResult) {
+                console.log(JSON.stringify(placesResult));
+                if (placesResult.response.minivenues) {
+                    $scope.places = placesResult.response.minivenues;
+                    $scope.hasResults = true;
+                }
+                else {
+                    $scope.places = [];
+                    $scope.hasResults = false;
+                }
+            });
+        };
 
-
-
-
-
+        //store info from fsquare and move to next view
+        $scope.selectPlace = function(placeMetadata){
+            console.log(placeMetadata);
+            $scope.restaurantData.name = placeMetadata.name;
+            $scope.restaurantData.address = placeMetadata.location.address;
+            $scope.restaurantData.location = placeMetadata.location.city;
+            $scope.restaurantData.fsquareID = placeMetadata.id;
+            $scope.restaurantData.crossStreet = placeMetadata.location.crossStreet;
+            $scope.restaurantData.longitude = placeMetadata.location.lng;
+            $scope.restaurantData.latitude = placeMetadata.location.lat;
+            $state.go('app.addReview.required',{},{reload: false});
         };
 
     }])
@@ -239,11 +265,6 @@ angular.module('formApp', [
                 $scope.restaurants = restaurants;
             });
         });
-
-        //// we will store all of our form data in this object
-        //$http.get('data/reviews.json').success(function(data) {
-        //    $scope.reviews = data;
-        //});
 
     }])
 
