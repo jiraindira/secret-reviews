@@ -2,7 +2,7 @@
  * Created by Jiraindira on 4/2/15.
  */
 
-angular.module('myFilters', []).filter("placeNameCategoryFilter", function () {
+angular.module('myFilters', []).filter("nameFilter", function () {
     return function (places, filterValue) {
         if (!filterValue) return places;
 
