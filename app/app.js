@@ -1,3 +1,4 @@
+
 /**
  * Created by Jiraindira on 12/15/14.
  */
@@ -15,7 +16,7 @@ angular.module('formApp', [
     'myService',
     'myFilters',
     'ui.bootstrap'
-    ])
+])
 
 // configuring our routes 
 // =============================================================================
@@ -171,6 +172,8 @@ angular.module('formApp', [
                 if (dataSnapshot.exists()){
                     var data = dataSnapshot.val();
                     var key = Object.keys(data)[0];
+                    var masterList = consolidateAmbiance(data[key],payloadRestaurant);
+                    restoRef.child(key).set(masterList);
                     reviewsUrl = 'https://dazzling-heat-4525.firebaseio.com/restaurant/' + key + "/reviews";
                     fbReviews = new Firebase(reviewsUrl);
                     fbReviews.push(payloadReviewer);
@@ -186,6 +189,18 @@ angular.module('formApp', [
             });
 
         };
+
+        //consolidate ambiances into a master list
+        function consolidateAmbiance(masterAmbiance,userAmbiance){
+            for (var key in userAmbiance.ambiances){
+                var temp = userAmbiance.ambiances[key];
+                if (temp == true) {
+                    masterAmbiance.ambiances[key] = userAmbiance.ambiances[key];
+                }
+            }
+            return masterAmbiance;
+
+        }
 
         //find location from four square
         $scope.doSearch = function () {
@@ -282,5 +297,4 @@ angular.module('formApp', [
             return array.join(', ');
         };
     });
-
 
