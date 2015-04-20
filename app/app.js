@@ -109,7 +109,7 @@ angular.module('formApp', [
 
 // our controller for the form
 // =============================================================================
-    .controller('formController', ['$scope', 'placesExplorerService', '$state', '$filter', '$firebase', '$http', function($scope,placesExplorerService, $state,$filter, $firebase,$http) {
+    .controller('formController', ['$scope', 'placesExplorerService', '$state', '$filter', '$firebase', '$http','$modal', function($scope,placesExplorerService, $state,$filter, $firebase,$http,$modal) {
 
         // we will store all of our form data in this object
         $http.get('data/bmatrixParameters.json').success(function(data) {
@@ -120,13 +120,6 @@ angular.module('formApp', [
         $scope.restaurantData = {};
         // we will store all of the reviewer's specific data here
         $scope.reviewerData = {};
-
-
-        // function to process the form
-        //$scope.processForm = function() {
-        //    var temp = $scope.restaurantData;
-        //    alert(temp);
-        //};
 
         $scope.restaurantData = {
             ambiances: {
@@ -152,10 +145,20 @@ angular.module('formApp', [
 
         $scope.AddPost = function(){
             var id = $scope.restaurantData.fsquareID;
+            var manualId = $scope.restaurantData.name;
             var reviewer = $scope.reviewerData.reviewer;
 
+            if (id == undefined){
+                var firebaseID = manualId;
+                var firebaseChild = "name";
+            }
+            else{
+                var firebaseID = id;
+                var firebaseChild = "fsquareID"
+            }
             //add date to the reviewer list
-            $scope.reviewerData.date = new Date();
+            d = new Date();
+            $scope.reviewerData.date = d;
 
             // Making a copy so that you don't mess with original user input
             var payloadRestaurant = angular.copy($scope.restaurantData);
@@ -166,7 +169,7 @@ angular.module('formApp', [
             var reviewsUrl = "";
             var fbReviews = {};
 
-            restoRef.orderByChild("fsquareID").startAt(id).endAt(id).once('value', function(dataSnapshot) {
+            restoRef.orderByChild(firebaseChild).startAt(firebaseID).endAt(firebaseID).once('value', function(dataSnapshot) {
                 //GET DATA
 
                 if (dataSnapshot.exists()){
@@ -242,6 +245,29 @@ angular.module('formApp', [
             $state.go('app.addReview.required',{},{reload: false});
         };
 
+        ////testing
+        //$scope.items = ['item1', 'item2', 'item3'];
+        //
+        //$scope.open = function (size) {
+        //
+        //    var modalInstance = $modal.open({
+        //        templateUrl: 'partials/addReview-manual.html',
+        //        controller: 'ModalInstanceCtrl',
+        //        size: size,
+        //        resolve: {
+        //            items: function () {
+        //                return $scope.items;
+        //            }
+        //        }
+        //    });
+        //
+        //    modalInstance.result.then(function (selectedItem) {
+        //        $scope.selected = selectedItem;
+        //    }, function () {
+        //        $log.info('Modal dismissed at: ' + new Date());
+        //    });
+        //}
+////////////////////////////////////////////////
     }])
 
     .controller('homeController', ['$scope', '$firebase', '$http', function($scope,$firebase, $http ) {
@@ -289,6 +315,25 @@ angular.module('formApp', [
         });
 
     }])
+
+    .controller('manualController', function ($scope, $modalInstance) {
+        $scope.test = 1;
+})
+    //.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+    //
+    //    $scope.items = items;
+    //    $scope.selected = {
+    //        item: $scope.items[0]
+    //    };
+    //
+    //    $scope.ok = function () {
+    //        $modalInstance.close($scope.selected.item);
+    //    };
+    //
+    //    $scope.cancel = function () {
+    //        $modalInstance.dismiss('cancel');
+    //    };
+    //})
 
     .filter('list', function () {
         return function (array) {
