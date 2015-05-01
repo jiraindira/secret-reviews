@@ -1,36 +1,44 @@
 <!-- taste of food -->
-<label>How was the food/drink?</label>
-<div class="form-group">
-    <div class="radio">
-        <label>
-            <input type="radio" name="group1" ng-model="reviewerData.taste" value="Delicious" checked>
-            It was delicious!
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input type="radio" name="group1" ng-model="reviewerData.taste" value="Average">
-            It was alright!
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input type="radio" name="group1" ng-model="reviewerData.taste" value="Poor">
-            It was meh!
-        </label>
+<div>
+    <label>How was the food/drink?</label>
+    <div class="form-group">
+        <div class="radio">
+            <label>
+                <input type="radio" name="group1" ng-model="reviewerData.taste" value="Delicious" checked>
+                It was delicious!
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="group1" ng-model="reviewerData.taste" value="Average">
+                It was alright!
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="group1" ng-model="reviewerData.taste" value="Poor">
+                It was meh!
+            </label>
+        </div>
     </div>
 </div>
+
 
 <!--  what type of a spot -->
-<label>How would you best describe the place?</label>
-<div class="btn-group-sm">
-    <div ng-repeat="(key, val) in restaurantData.ambiances">
-        <label>
-            <label class="btn btn-primary" ng-model="restaurantData.ambiances[key]" btn-checkbox>{{key}}</label>
-        </label>
-    </div>
+<div>
+    <p>How would you best describe the place?</p>
+
+        <div class="btn-group">
+            <span ng-repeat="(key, val) in restaurantData.observations">
+            <button type="button" class="btn btn-primary btn-margin-top" ng-model="restaurantData.observations[key]" btn-checkbox>{{key}}</button>
+            <!--<label>-->
+                <!--<label class="btn btn-primary" ng-model="restaurantData.observations[key]" btn-checkbox>{{key}}</label>-->
+            <!--</label>-->
+                </span>
+        </div>
 
 </div>
+
 
 <!--  Price -->
 <label>Damage to the pocket?</label>

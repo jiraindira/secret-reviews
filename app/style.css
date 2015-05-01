@@ -22,7 +22,7 @@ pre                             { margin-bottom:20px; }
 
 .restaurant h4 { position: relative; }
 .restaurant .num-of-reviews { position: absolute; top: 0; right: 0; }
-
+.btn-margin-top {margin-top: 5px}
 
 
 /* ANIMATION STYLINGS

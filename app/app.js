@@ -46,6 +46,17 @@ angular.module('formApp', [
 
             })
 
+            .state('app.feedback', {
+                url: 'feedback',
+                views: {
+                    'content@': {
+                        templateUrl: 'partials/feedback.html',
+                        controller: 'feedbackController'
+                    }
+                }
+
+            })
+
             .state('app.addReview', {
                 url: 'addReview',
                 views: {
@@ -122,7 +133,7 @@ angular.module('formApp', [
         $scope.reviewerData = {};
 
         $scope.restaurantData = {
-            ambiances: {
+            observations: {
                 'Big Group': false,
                 'Casual':false,
                 'Conversation': false,
@@ -175,7 +186,7 @@ angular.module('formApp', [
                 if (dataSnapshot.exists()){
                     var data = dataSnapshot.val();
                     var key = Object.keys(data)[0];
-                    var masterList = consolidateAmbiance(data[key],payloadRestaurant);
+                    var masterList = consolidateObservation(data[key],payloadRestaurant);
                     restoRef.child(key).set(masterList);
                     reviewsUrl = 'https://dazzling-heat-4525.firebaseio.com/restaurant/' + key + "/reviews";
                     fbReviews = new Firebase(reviewsUrl);
@@ -193,15 +204,15 @@ angular.module('formApp', [
 
         };
 
-        //consolidate ambiances into a master list
-        function consolidateAmbiance(masterAmbiance,userAmbiance){
-            for (var key in userAmbiance.ambiances){
-                var temp = userAmbiance.ambiances[key];
+        //consolidate observations into a master list
+        function consolidateObservation(masterObservation,userObservation){
+            for (var key in userObservation.observations){
+                var temp = userObservation.observations[key];
                 if (temp == true) {
-                    masterAmbiance.ambiances[key] = userAmbiance.ambiances[key];
+                    masterObservation.observations[key] = userObservation.observations[key];
                 }
             }
-            return masterAmbiance;
+            return masterObservation;
 
         }
 
@@ -270,7 +281,7 @@ angular.module('formApp', [
 ////////////////////////////////////////////////
     }])
 
-    .controller('homeController', ['$scope', '$firebase', '$http', function($scope,$firebase, $http ) {
+    .controller('homeController', ['$scope', '$firebase', '$http', function($scope,$firebase,$http) {
         function getArrayFromObject(object) {
             var array = [];
             for (var key in object) {
@@ -298,14 +309,14 @@ angular.module('formApp', [
             //var numOfRestaurants = Object.keys(restaurants).length;
             if (!restaurants.length) return;
 
-            // Attach list of selected ambiances to each review)
+            // Attach list of selected observations to each review)
             restaurants.forEach(function (restaurant) {
                 restaurant.reviews = getArrayFromObject(restaurant.reviews);
 
                 // pandai pandai la
-                restaurant.ambiances = Object.keys(restaurant.ambiances)
+                restaurant.observations = Object.keys(restaurant.observations)
                     .filter(function (key) {
-                        return restaurant.ambiances[key];
+                        return restaurant.observations[key];
                     });
             });
 
@@ -316,24 +327,23 @@ angular.module('formApp', [
 
     }])
 
-    .controller('manualController', function ($scope, $modalInstance) {
-        $scope.test = 1;
-})
-    //.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
-    //
-    //    $scope.items = items;
-    //    $scope.selected = {
-    //        item: $scope.items[0]
-    //    };
-    //
-    //    $scope.ok = function () {
-    //        $modalInstance.close($scope.selected.item);
-    //    };
-    //
-    //    $scope.cancel = function () {
-    //        $modalInstance.dismiss('cancel');
-    //    };
-    //})
+    .controller('feedbackController', ['$scope', '$firebase','$state', '$http', function($scope,$firebase,$state,$http) {
+        // we will store all of the feedback specific data here
+        $scope.feedback = {};
+
+        //add date to the reviewer list
+        d = new Date();
+        $scope.feedback.date = d;
+
+        $scope.submitFeedback = function() {
+            // create feedback object from firebase
+            var feedbackRef = new Firebase('https://dazzling-heat-4525.firebaseio.com/feedback');
+            feedbackRef.push($scope.feedback);
+            $state.go('app.home', {}, {reload: true});
+        }
+
+
+    }])
 
     .filter('list', function () {
         return function (array) {
