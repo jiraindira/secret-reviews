@@ -57,6 +57,17 @@ angular.module('formApp', [
 
             })
 
+            .state('app.like', {
+                url: 'home',
+                views: {
+                    'content@': {
+                        templateUrl: 'partials/home.html',
+                        controller: 'likeController'
+                    }
+                }
+
+            })
+
             .state('app.addReview', {
                 url: 'addReview',
                 views: {
@@ -341,6 +352,23 @@ angular.module('formApp', [
             feedbackRef.push($scope.feedback);
             $state.go('app.home', {}, {reload: true});
         }
+
+
+    }])
+
+    .controller('likeController', ['$scope', '$firebase','$state', '$http', function($scope,$firebase,$state,$http) {
+        // we will store all of the feedback specific data here
+        $scope.like = {};
+
+        //add date to the reviewer list
+        d = new Date();
+        $scope.like.date = d;
+        $scope.like.count = 1;
+        
+        var feedbackRef = new Firebase('https://dazzling-heat-4525.firebaseio.com/totalLike');
+        feedbackRef.push($scope.like);
+        $state.go('app.home', {}, {reload: true});
+
 
 
     }])
