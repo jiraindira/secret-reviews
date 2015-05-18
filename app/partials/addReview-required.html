@@ -1,3 +1,11 @@
+<p></p>
+<p></p>
+        
+<div class="form-group">
+    <label for="dishes">Recommended dish(s)/drink(s)</label>
+    <input type="text" class="form-control" name="dishes" ng-model="reviewerData.dishes">
+</div>
+
 <!-- taste of food -->
 <div>
     <label>How was the food/drink?</label>
@@ -23,73 +31,60 @@
     </div>
 </div>
 
-
 <!--  what type of a spot -->
 <div>
-    <p>How would you best describe the place?</p>
-
+    <label>How would you best describe the place?</label>
         <div class="btn-group">
             <span ng-repeat="(key, val) in restaurantData.observations">
-            <button type="button" class="btn btn-primary btn-margin-top" ng-model="restaurantData.observations[key]" btn-checkbox>{{key}}</button>
-            <!--<label>-->
-                <!--<label class="btn btn-primary" ng-model="restaurantData.observations[key]" btn-checkbox>{{key}}</label>-->
-            <!--</label>-->
-                </span>
+                <button type="button" class="btn btn-primary btn-margin-top" ng-model="restaurantData.observations[key]" btn-checkbox>{{key}}</button>
+            </span>
         </div>
 
 </div>
 
+<p></p>
+<p></p>
 
-<!--  Price -->
-<label>Damage to the pocket?</label>
 <div class="form-group">
-    <div class="radio">
-        <label>
-            <input type="radio" ng-model="reviewerData.cost" value="$">
-            $
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input type="radio" ng-model="reviewerData.cost" value="$$">
-            $$
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input type="radio" ng-model="reviewerData.cost" value="$$$">
-            $$$
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input type="radio" ng-model="reviewerData.cost" value="$$$$">
-            $$$$
-        </label>
-    </div>
+    <label for="caption">Caption</label>
+    <input type="text" class="form-control" name="caption" ng-model="reviewerData.caption">
 </div>
 
-<!--  what is your verdict -->
-<label>Would you recommend a friend here?</label>
-<div class="form-group">
-    <div class="radio">
-        <label>
-            <input type="radio" ng-model="reviewerData.verdict" value="Yes" checked>
-            Yes!!
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input type="radio" ng-model="reviewerData.verdict" value="No">
-            No!!
-        </label>
-    </div>
+
+<div class="text-center">
+    <span class="glyphicon glyphicon-cutlery"></span>
+    <h3>You're Done!</h3>
+
+    <button type="submit"  class="btn btn-danger">Submit</button>
 </div>
 
-<div class="form-group row">
-    <div class="col-xs-6 col-xs-offset-3">
-        <a ui-sref="app.addReview.optional" class="btn btn-block btn-primary">
-            Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
-        </a>
-    </div>
-</div>
+
+<!--&lt;!&ndash;  Price &ndash;&gt;-->
+<!--<label>Damage to the pocket?</label>-->
+<!--<div class="form-group">-->
+    <!--<div class="radio">-->
+        <!--<label>-->
+            <!--<input type="radio" ng-model="reviewerData.cost" value="$">-->
+            <!--$-->
+        <!--</label>-->
+    <!--</div>-->
+    <!--<div class="radio">-->
+        <!--<label>-->
+            <!--<input type="radio" ng-model="reviewerData.cost" value="$$">-->
+            <!--$$-->
+        <!--</label>-->
+    <!--</div>-->
+    <!--<div class="radio">-->
+        <!--<label>-->
+            <!--<input type="radio" ng-model="reviewerData.cost" value="$$$">-->
+            <!--$$$-->
+        <!--</label>-->
+    <!--</div>-->
+    <!--<div class="radio">-->
+        <!--<label>-->
+            <!--<input type="radio" ng-model="reviewerData.cost" value="$$$$">-->
+            <!--$$$$-->
+        <!--</label>-->
+    <!--</div>-->
+<!--</div>-->
+

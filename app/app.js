@@ -149,14 +149,15 @@ angular.module('formApp', [
                 'Casual':false,
                 'Conversation': false,
                 'Crowded':false,
-                'Date': false,
+                'Date Spot': false,
                 'Fine Dining':false,
                 'Great Service': false,
                 'Great View': false,
                 'Long Wait':false,
                 'Meeting': false,
                 'Mixology': false,
-                'Romantic':false
+                'Romantic':false,
+                'Outdoor Space':false
             },
             'location' : 'New York, NY'
         };
@@ -180,7 +181,7 @@ angular.module('formApp', [
             }
             //add date to the reviewer list
             d = new Date();
-            $scope.reviewerData.date = d;
+            $scope.reviewerData.date = d.toDateString();
 
             // Making a copy so that you don't mess with original user input
             var payloadRestaurant = angular.copy($scope.restaurantData);
@@ -364,7 +365,7 @@ angular.module('formApp', [
         d = new Date();
         $scope.like.date = d;
         $scope.like.count = 1;
-        
+
         var feedbackRef = new Firebase('https://dazzling-heat-4525.firebaseio.com/totalLike');
         feedbackRef.push($scope.like);
         $state.go('app.home', {}, {reload: true});
