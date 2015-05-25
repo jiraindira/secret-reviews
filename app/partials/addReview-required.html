@@ -1,31 +1,26 @@
 <p></p>
 <p></p>
 
-<div class="form-group">
-    <label for="dishes">Recommended dish(s)/drink(s)</label>
-    <input type="text" class="form-control" name="dishes" ng-model="reviewerData.dishes">
-</div>
-
 <!-- taste of food -->
 <div>
     <label>How was the food/drink?</label>
     <div class="form-group">
         <div class="radio">
             <label>
-                <input type="radio" name="group1" ng-model="reviewerData.taste" value="Delicious" checked>
-                It was delicious!
+                <input type="radio" name="group1" ng-model="reviewerData.taste" value="Amazing" checked>
+                Amazing!! You must try this place!!
             </label>
         </div>
         <div class="radio">
             <label>
-                <input type="radio" name="group1" ng-model="reviewerData.taste" value="Average">
-                It was alright!
+                <input type="radio" name="group1" ng-model="reviewerData.taste" value="Good">
+                It was good. I would come back again.
             </label>
         </div>
         <div class="radio">
             <label>
                 <input type="radio" name="group1" ng-model="reviewerData.taste" value="Poor">
-                It was meh!
+                It was alright!
             </label>
         </div>
     </div>
@@ -46,8 +41,8 @@
 <p></p>
 
 <div class="form-group">
-    <label for="caption">Caption</label>
-    <input type="text" class="form-control" name="caption" ng-model="reviewerData.caption">
+    <label for="caption">Insider tips?</label>
+    <input type="text" class="form-control" name="caption" ng-model="reviewerData.caption" placeholder="Fav dish, how to beat the crowd, etc">
 </div>
 
 
